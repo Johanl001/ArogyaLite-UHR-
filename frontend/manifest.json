@@ -1,0 +1,9 @@
+{
+  "name": "ArogyaLite-UHR",
+  "short_name": "ArogyaLite",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "description": "Offline-first Unified Health Record",
+  "icons": []
+}

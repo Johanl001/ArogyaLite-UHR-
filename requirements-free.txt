@@ -1,0 +1,4 @@
+# Testing & Code Formatting
+pytest==8.2.0
+black==24.3.0
+isort==5.13.2

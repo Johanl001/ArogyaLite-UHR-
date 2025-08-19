@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Asha Sharma",
+    "age": 29,
+    "gender": "Female",
+    "contact": "+91-90000-11111"
+  },
+  {
+    "name": "Rahul Verma",
+    "age": 41,
+    "gender": "Male",
+    "contact": "+91-90000-22222"
+  }
+]
