@@ -3,6 +3,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 from backend.api.routes import router as api_router
+from backend.api.auth import router as auth_router
 from backend.database.sqlite_manager import SQLiteManager
 
 load_dotenv()
@@ -27,3 +28,4 @@ def root():
     return {"status": "ok", "service": "ArogyaLite-UHR"}
 
 app.include_router(api_router, prefix="/api")
+app.include_router(auth_router, prefix="/api")

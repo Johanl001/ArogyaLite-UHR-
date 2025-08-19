@@ -1,2 +1,3 @@
-# Placeholder for any HF Spaces-specific setup
-print("For Hugging Face Spaces, set the 'app.py' as entrypoint.")
+import os
+print("Hugging Face Spaces runtime detected.")
+print("Entry: app.py (Gradio). PORT:", os.getenv("PORT"))
