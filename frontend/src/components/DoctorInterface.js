@@ -9,6 +9,7 @@ export default function DoctorInterface(){
   const [contact, setContact] = useState('')
   const [note, setNote] = useState('')
   const [msg, setMsg] = useState('')
+  const [ai, setAi] = useState(null)
   const api = import.meta.env.VITE_API_URL || 'http://localhost:8000'
 
   async function token(){ return getToken() }
@@ -31,6 +32,15 @@ export default function DoctorInterface(){
     const js = await res.json(); setMsg(`Added record id ${js.id}`)
   }
 
+  const analyzeNote = async () => {
+    const t = await token()
+    const res = await fetch(`${api}/api/ai/analyze`, { method:'POST',
+      headers:{ 'Content-Type':'application/json', Authorization:`Bearer ${t}` },
+      body: JSON.stringify({ note })
+    })
+    const js = await res.json(); setAi(js)
+  }
+
   return (
     <div>
       <h3>Doctor Interface</h3>
@@ -47,9 +57,18 @@ export default function DoctorInterface(){
       <div style={{display:'grid', gap:8, maxWidth:480}}>
         <input placeholder="Patient ID" value={pid} onChange={e=>setPid(e.target.value)} />
         <textarea rows={5} placeholder="Clinical Note" value={note} onChange={e=>setNote(e.target.value)} />
-        <button onClick={addRecord}>Add Record</button>
+        <div style={{display:'flex', gap:8}}>
+          <button onClick={addRecord}>Add Record</button>
+          <button onClick={analyzeNote}>AI Analyze</button>
+        </div>
       </div>
       <p>{msg}</p>
+      {ai && (
+        <div style={{marginTop:12}}>
+          <h4>AI Assistant</h4>
+          <pre style={{whiteSpace:'pre-wrap'}}>{JSON.stringify(ai, null, 2)}</pre>
+        </div>
+      )}
     </div>
   )
 }

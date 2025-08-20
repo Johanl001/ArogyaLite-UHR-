@@ -39,6 +39,11 @@ class SQLiteManager:
         cur.execute("SELECT * FROM patients ORDER BY id DESC")
         rows = [dict(r) for r in cur.fetchall()]; con.close(); return rows
 
+    def get_patient(self, patient_id: int):
+        con = self._conn(); con.row_factory = sqlite3.Row; cur = con.cursor()
+        cur.execute("SELECT * FROM patients WHERE id=?", (patient_id,))
+        row = cur.fetchone(); con.close(); return dict(row) if row else None
+
     # Records
     def add_record(self, data: Dict) -> int:
         con = self._conn(); cur = con.cursor()

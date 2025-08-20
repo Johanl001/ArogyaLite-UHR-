@@ -22,3 +22,6 @@ Focuses on local processing, privacy, and zero-cost stack choices.
 - Minimal, auditable codebase
 
 See `docs/FREE_SETUP.md` and `docs/API_DOCUMENTATION.md` for quick start and endpoints.
+
+## .env template
+Copy `.env.example` to `.env` and fill in values as needed. For a free AI option, set `AI_PROVIDER=hf` and create a free token at `https://huggingface.co/settings/tokens` (Read scope). Put it in `HUGGINGFACE_API_TOKEN`.
