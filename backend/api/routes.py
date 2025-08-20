@@ -1,8 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException, Header
 from typing import Optional
 from backend.database.models import PatientCreate, RecordCreate
-from backend.ai.medical_ner import extract_entities
-from backend.ai.prescription_ai import suggest_prescription
+from backend.ai.assistant import analyze_note
 from backend.database.sqlite_manager import SQLiteManager
 from backend.utils.jwt_utils import decode_token
 import os
@@ -47,6 +46,4 @@ def list_records(patient_id: int, user=Depends(auth_dependency)):
 
 @router.post("/ai/analyze", tags=["ai"])
 def ai_analyze(note: str, user=Depends(auth_dependency)):
-    ents = extract_entities(note) or []
-    rx = suggest_prescription(note) or "No suggestion"
-    return {"entities": ents, "suggestion": rx}
+    return analyze_note(note)
