@@ -1,5 +1,15 @@
 # ArogyaLite-UHR — Free Unified Digital Health Record (UHR) System
 
+---
+title: ArogyaLite-UHR
+emoji: 🏥
+colorFrom: blue
+colorTo: green
+sdk: gradio
+app_file: app.py
+pinned: false
+---
+
 A fully free, open-source starter kit for a **Unified Digital Health Record** with an **offline-first** mindset.
 Focuses on local processing, privacy, and zero-cost stack choices.
 

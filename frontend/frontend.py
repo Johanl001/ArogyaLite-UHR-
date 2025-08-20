@@ -1,11 +1,11 @@
+import os, requests
 import gradio as gr
 from backend.main import app  # Optional: if you want to call FastAPI functions directly
-import requests
 
 # Example functions to call your backend API
 # Replace these with your actual endpoints and logic
 
-BASE_URL = "http://127.0.0.1:8000"
+BASE_URL = os.getenv("BACKEND_URL", "http://127.0.0.1:8000")
 
 def get_status():
     """Check API status"""
